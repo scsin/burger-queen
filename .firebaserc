@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "<nome-do-seu-projeto>"
+    "default": "<nome-do-seu-projeto>",
+    "develop": "burgerqueen-30488"
   }
 }
