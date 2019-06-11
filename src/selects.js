@@ -4,11 +4,8 @@ class Selects extends React.Component {
     render() {
         return(
             <div>
-                <form>
-                    {/* SELECIONAR SÓ UM DOS SELECTS */}
-                    <input id="cozinha" type="radio" /> Cozinha
-                    <input id="salão" type="radio" /> Salão
-                </form>
+                <input id="cozinha" type="radio" name="tipo" /> Cozinha
+                <input id="salão" type="radio" name="tipo" /> Salão
             </div>
         )
     }
