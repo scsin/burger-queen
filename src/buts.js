@@ -1,16 +1,11 @@
 import React from 'react';
-// import Login from './login';
 
-class Buts extends React.Component {
-    render() {
-        // this.routeChange = this.routeChange.bind(this);
-        return(
-            <div>
-                <button onClick={this.props.onClick} onClick={this.props.login}>{this.props.one}</button>
-                <button onClick={this.props.onClick} onClick={this.props.create}>{this.props.two}</button>
-            </div>
-        )
-    }
+function Buts(props) {
+    return (
+        <div>
+            <a style={props.style} className="waves-effect waves-light btn" onClick={props.onClick}>{props.one}</a>
+        </div>
+    )
 }
 
 export default Buts;

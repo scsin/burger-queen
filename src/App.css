@@ -9,19 +9,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #282c34;
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -31,3 +31,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+/*  */
+
+
+
+
+
+
+
+/* .homepage {
+  width: auto;
+  height: 100%;
+  background-color: #ffffff;
+} */
