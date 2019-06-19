@@ -39,8 +39,7 @@ function App() {
 
           <Route path="/cadastro" component={Cadastro} />
 
-          {/* SALÃO */}
-          <Route path="/salao" component={Salao} />
+          <Route path="/salão" component={Salao} />
 
           {/* COZINHA */} oi bebe
           <Route path="/cozinha" component={Cozinha} />

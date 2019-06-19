@@ -3,8 +3,6 @@ import firebase from '../firebaseConfig'
 import withFirebaseAuth from 'react-with-firebase-auth';
 import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 
-import Salao from '../pages/salao';
-
 import Logo from '../image';
 import Input from '../inputs';
 import Buts from '../buts';
@@ -43,16 +41,19 @@ class Cadastro extends React.Component {
             sobrenome: this.state.sobrenome,
             type: this.state.type
         }
-        this.createUser()
-        // firestore.collection('BurgerQueen').add(infos)
+        this.createUser(infos)
     }
 
-    createUser = () => {
+    createUser = (infos) => {
         this.props.createUserWithEmailAndPassword(this.state.email,
             this.state.senha)
-            .then(() => {
-                console.log(this.state.type)
-                return <Redirect to={this.state.type} />
+            .then((resp) => {
+                if(resp) {
+                    firestore.collection("user").doc(resp.user.uid).get().then(doc => {
+                        firestore.collection("teste").doc(resp.user.uid).set(infos)
+                        this.props.history.push(this.state.type)
+                    })
+                }
             })
     };
 
@@ -64,7 +65,7 @@ class Cadastro extends React.Component {
                 <Input getemail={(e) => this.handleChange((e), 'email')} getsenha={(e) => this.handleChange((e), 'senha')} typep="password" typet="text" one="Email" two="Senha" />
                 <Selects getType={(e) => this.handleChange((e), 'type')} />
                 <Buts style={{backgroundColor: "#69306D"}} one="CADASTRAR" onClick={this.handleClick} />
-                <Buts style={{backgroundColor: "#FEBE10"}} one="CANCELAR" />
+                <Link to="/"><Buts style={{backgroundColor: "#FEBE10"}} one="CANCELAR" /></Link>
             </div>
         )
     }

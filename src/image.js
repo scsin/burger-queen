@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './pages/LogoBurgerQueenNew.png';
 
+// '200px' width='auto' />
+
 function Image(){
     return(
         <div>

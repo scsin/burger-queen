@@ -3,8 +3,6 @@ import firebase from '../firebaseConfig'
 import withFirebaseAuth from 'react-with-firebase-auth';
 import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 
-import Cadastro from './cadastro';
-
 import {styles} from '../styles';
 import Logo from '../image';
 import Input from '../inputs';
@@ -35,25 +33,30 @@ class HomePage extends React.Component {
             senha: this.state.senha
         }
         this.loginUser();
-        // firestore.collection('BurgerQueen').add(infos)
     }
     
     loginUser = () => {
         this.props.signInWithEmailAndPassword(this.state.email,
             this.state.senha)
-            .then(() => {
-                console.log('red')
-                return <Redirect to="/salao" />
+            .then((resp) => {
+                if(resp){
+                    firestore.collection("user").doc(resp.user.uid).get().then(doc => {
+                        // const data = doc.data();
+                        firestore.collection("teste").doc(resp.user.uid).get().then(x => {
+                            this.props.history.push(x.data().type);
+                        })
+                    })
+                }
             })
     };
 
     render() {
         return (
             <div className="homepage">
-                <Logo className="logo-bq" />
+                <Logo className="logo-bq" height="200px" width="auto" />
                 <Input getemail={(e) => this.handleChange((e), 'email')} getsenha={(e) => this.handleChange((e), 'senha')} typep="password" typet="text" one="Email" two="Senha" />
                 <Buts style={{backgroundColor: "#69306D", fontWeight: 500}} onClick={this.handleClick} one="ENTRAR" />
-                <Buts style={{backgroundColor: "transparent", color: "#FEBE10", border: "none", boxShadow: "none", fontWeight: 700}} one="PRIMEIRO ACESSO? CADASTRE-SE" />
+                <Link to="/cadastro"><Buts style={{backgroundColor: "transparent", color: "#FEBE10", border: "none", boxShadow: "none", fontWeight: 700}} one="PRIMEIRO ACESSO? CADASTRE-SE" /></Link>
             </div>
         )
     }

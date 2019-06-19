@@ -1,15 +1,12 @@
 import React from 'react';
 import Data from './menu.json';
 
-class Menu extends React.Component{
-    render() {
-        const x = (element) => element;
-        return (
-        <div>
-            <p>{Object.keys(x(Data.CM))}: {Object.values(x(Data.CM))}</p>
-        </div>
-        )
-    }
+function Menu() { //extends React.Component{
+    // render() {
+    console.log(Object.keys(Data.CM))//.forEach(element => element))
+    return (
+        <div><button>{Object.keys(Data.CM)}</button></div>//.forEach(element => <button>{element}</button>)}</div>
+    );
 }
 
 export default Menu;
